@@ -54,7 +54,7 @@ async def start(client, message):
         if not kok:
             await add_user(user_id)
     else:
-        message87 = f"Hi Master, It's Me {bot_name}, Your Assistant ! \nWhat You Wanna Do today ?"
+        message87 = f"Hi Master, It's Me {bot_name}, Your Assistant ! \nWhat Do You wanna today ?"
         await client.send_photo(
             message.chat.id,
             mypic,
