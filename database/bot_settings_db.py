@@ -28,6 +28,12 @@ async def add_pm_text(text=default_text):
     else:
         await bsdb.insert_one({"_id": "PM_START_MSG", "pm_msg": text})
 
+async def add_block_text(text=default_text):
+    _ = await bsdb.find_one({"_id": "PM_BLOCK_MSG"})
+    if _:
+        await bsdb.update_one({"_id": "PM_BLOCK_MSG"}, {"$set": {"msg": text}})
+    else:
+        await bsdb.insert_one({"_id": "PM_BLOCK_MSG", "msg": text})
 
 async def add_pm_thumb(thumb=default_thumb):
     ujwal = await bsdb.find_one({"_id": "PM_START_THUMB"})
