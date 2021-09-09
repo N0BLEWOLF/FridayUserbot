@@ -57,6 +57,13 @@ async def get_pm_text():
         return ujwal["pm_msg"]
     else:
         return default_text
+    
+async def get_block_text():
+    __ = await bsdb.find_one({"_id": "PM_BLOCK_MSG"})
+    if __:
+        return __["msg"]
+    else:
+        return default_text
 
 
 async def set_pm_spam_limit(psl=3):
