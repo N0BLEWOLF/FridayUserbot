@@ -17,6 +17,8 @@ from database.bot_settings_db import (
     get_pm_spam_limit,
     get_pm_text,
     get_thumb,
+    add_block_text,
+    get_block_text,
     set_pm_spam_limit,
 )
 from database.pmdb import approve_user, disapprove_user, is_user_approved
@@ -332,15 +334,21 @@ async def pmPermit(client, message):
     text = await get_pm_text()
     log = LogIt(message)
     capt = await get_thumb()
-    pm_s_ = await get_pm_spam_limit()
+    pm_warns = await get_pm_spam_limit()
+    PM_CUSTOM_BLOCK_MSG = await get_block_text()
     if int(message.chat.id) not in PM_WARNS:
         PM_WARNS[int(message.chat.id)] = 0
     else:
         PM_WARNS[int(message.chat.id)] += 1
-    if PM_WARNS[int(message.chat.id)] >= int(pm_s_):
-        await message.reply_text(
-            f"`Thats It! I Gave You {int(pm_s_)} Warning. Now Fuck Off. Blocked And Reported!`"
-        )
+    if PM_WARNS[int(message.chat.id)] >= int(pm_warns):
+        if not PM_CUSTOM_BLOCK_MSG:
+            await message.reply_text(
+                f"`Thats It! I Gave You {int(pm_warns)} Warnings.\nYou are now Reported and Blocked`\n**Reason:** `SPAM LIMIT REACHED !`"
+            )
+        else:
+            await message.reply_text(
+                f"{PM_CUSTOM_BLOCK_MSG}"
+            )
         await client.block_user(user_.id)
         if int(message.chat.id) in OLD_MSG:
             OLD_MSG.pop(int(message.chat.id))
