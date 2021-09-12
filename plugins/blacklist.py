@@ -75,7 +75,7 @@ async def listblacklist(client, message):
     ["delblacklist", "rmblacklist", "delblockist", "rmblocklist"],
     cmd_help={
         "help": "Remove Text From Blacklist / Blocklist!",
-        "example": "{ch}blacklist porn",
+        "example": "{ch}delblacklist porn",
     },
 )
 async def delblacklist(client, message):
