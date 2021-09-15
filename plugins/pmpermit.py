@@ -347,7 +347,7 @@ async def pmPermit(client, message):
             )
         else:
             await message.reply_text(
-                f"{PM_CUSTOM_BLOCK_MSG}"
+                f"{eval(PM_CUSTOM_BLOCK_MSG)}"
             )
         await client.block_user(user_.id)
         if int(message.chat.id) in OLD_MSG:
