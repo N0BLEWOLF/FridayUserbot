@@ -114,12 +114,12 @@ RENAME_DONE: "__File Renamed and Uploaded. By FridayUserBot. Get your FridayUser
 G_S: "**Search Query:**\n `{}` \n\n**Results:**\n {}"
 DUCK_DUCK_GO: "Let me 🦆 DuckDuckGo that for you:\n🔎 [{}]({})"
 STATS: "`Your Stats Obtained in {} seconds`
-`You have {} Private Messages.`
-`You are in {} Groups.`
-`You are in {} Super Groups.`
-`You Are in {} Channels.`
-`You Are Admin in {} Chats.`
-`Bots = {}`"
+\n`You have {} Private Messages.`
+\n`You are in {} Groups.`
+\n`You are in {} Super Groups.`
+\n`You Are in {} Channels.`
+\n`You Are Admin in {} Chats.`
+\n`Bots = {}`"
 REPLY_TO_STICKER: "`Please Reply To Sticker...`"
 KANG_MAGIC_: "`Using Megic To Kang This Sticker...`"
 KANG_FULL: "Kang Pack Vol __{}__ is Full! Switching To Vol __{}__ Kang Pack"
