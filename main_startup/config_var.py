@@ -65,7 +65,7 @@ class Config((object)):
         "UPSTREAM_REPO", "https://github.com/DevsExpo/FridayUserbot"
     )
     ALIVE_IMG = os.environ.get(
-        "ALIVE_IMG", "https://telegra.ph//file/b94f56dd76b158149992e.jpg"
+        "ALIVE_IMG", "https://telegra.ph//file/7ad807cd9d562ae4f85d8.jpg"
     )
     U_BRANCH = "master"
     HEROKU_URL = fetch_heroku_git_url(HEROKU_API_KEY, HEROKU_APP_NAME)

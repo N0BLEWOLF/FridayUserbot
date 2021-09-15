@@ -17,6 +17,7 @@ If He Needs To Talk To You, He Will Approve You!</i>
 
 <b><u>You Have {warns} Of Warns.</b></u>
 """
+default_bloco_text = "`Thats It! I Gave You {int(pm_warns)} Warnings.\nYou are now Reported and Blocked`\n**Reason:** `SPAM LIMIT REACHED !`"
 
 default_thumb = "https://icon-icons.com/downloadimage.php?id=106660&root=1527/PNG/512/&file=shield_106660.png"
 
@@ -28,6 +29,12 @@ async def add_pm_text(text=default_text):
     else:
         await bsdb.insert_one({"_id": "PM_START_MSG", "pm_msg": text})
 
+async def add_block_text(text=default_bloco_text):
+    _ = await bsdb.find_one({"_id": "PM_BLOCK_MSG"})
+    if _:
+        await bsdb.update_one({"_id": "PM_BLOCK_MSG"}, {"$set": {"msg": text}})
+    else:
+        await bsdb.insert_one({"_id": "PM_BLOCK_MSG", "msg": text})
 
 async def add_pm_thumb(thumb=default_thumb):
     ujwal = await bsdb.find_one({"_id": "PM_START_THUMB"})
@@ -51,6 +58,13 @@ async def get_pm_text():
         return ujwal["pm_msg"]
     else:
         return default_text
+    
+async def get_block_text():
+    __ = await bsdb.find_one({"_id": "PM_BLOCK_MSG"})
+    if __:
+        return __["msg"]
+    else:
+        return default_bloco_text
 
 
 async def set_pm_spam_limit(psl=3):
